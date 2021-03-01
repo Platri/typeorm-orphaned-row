@@ -1,22 +1,21 @@
-import {Column, Entity, OneToMany, PrimaryGeneratedColumn} from "typeorm";
-import {LocationRoomEntity} from "./location-room.entity";
-
+import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
+import { RoomEntity } from './room.entity';
 
 @Entity()
 export class LocationEntity {
+  @PrimaryGeneratedColumn()
+  id: number;
 
-    @PrimaryGeneratedColumn()
-    id: number;
+  @Column({ type: 'varchar' })
+  street: string;
 
-    @Column({type: "varchar"})
-    street: string;
+  @Column({ type: 'int' })
+  streetNumber: number;
 
-    @Column({type: "int"})
-    streetNumber: number;
-
-    @OneToMany(
-        () => LocationRoomEntity,
-        locationRoomEntity => locationRoomEntity.locationEntity,
-        {cascade: true})
-    locationRoomEntity: LocationRoomEntity[]
+  @OneToMany(
+    () => RoomEntity,
+    (locationRoomEntity) => locationRoomEntity.locationEntity,
+    { cascade: true },
+  )
+  locationRoomEntity: RoomEntity[];
 }

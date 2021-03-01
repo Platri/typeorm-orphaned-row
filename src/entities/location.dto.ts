@@ -1,18 +1,15 @@
-import {IsArray, IsNumber, IsString} from 'class-validator';
+import { IsArray, IsNumber, IsString } from 'class-validator';
 
 export class LocationDto {
+  @IsNumber()
+  id: number;
 
-    @IsNumber()
-    id: number;
+  @IsString()
+  street: string;
 
-    @IsString()
-    street: string;
+  @IsNumber()
+  streetNumber: number;
 
-    @IsNumber()
-    streetNumber: number;
-
-
-    @IsArray()
-    locationRoomEntity: any
-
+  @IsArray()
+  locationRoomEntity: any;
 }

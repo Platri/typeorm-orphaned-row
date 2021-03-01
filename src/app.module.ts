@@ -2,10 +2,9 @@ import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { LocationModule } from './location/location.module';
-import { LocationRoomModule } from './location-room/location-room.module';
-import {TypeOrmModule} from "@nestjs/typeorm";
-import {LocationEntity} from "./entities/location.entity";
-import {LocationRoomEntity} from "./entities/location-room.entity";
+import { TypeOrmModule } from '@nestjs/typeorm';
+import { LocationEntity } from './entities/location.entity';
+import { RoomEntity } from './entities/room.entity';
 
 @Module({
   imports: [
@@ -16,12 +15,10 @@ import {LocationRoomEntity} from "./entities/location-room.entity";
       username: 'postgres',
       password: 'postgres',
       database: 'orphaned',
-      entities: [LocationEntity, LocationRoomEntity],
+      entities: [LocationEntity, RoomEntity],
       synchronize: true,
     }),
     LocationModule,
-    LocationRoomModule,
-
   ],
   controllers: [AppController],
   providers: [AppService],
